@@ -94,7 +94,7 @@ public class ContactFileOperations{
 	public static void addObjectToFile(ContactBean contact)
 	{
 		System.out.println("Test  1");
-		SimpleDBOperations.addContactToSimpleDB(contact);
+		GoogleCloudStorageOperations.addContactToSimpleDB(contact);
 		
 	}
 
@@ -117,15 +117,15 @@ public class ContactFileOperations{
 		
 		ArrayList<ContactBean> fileObjectList=new ArrayList<ContactBean>();
 		
-		ArrayList<ContactBean> simpleDbList=SimpleDBOperations.retrieveItem();
+		ArrayList<ContactBean> googleCloudContactList=GoogleCloudStorageOperations.retrieveItem();
 		
-		for(ContactBean obj1 : simpleDbList)
+		for(ContactBean obj1 : googleCloudContactList)
         {
        	 System.out.println("First Name From DB : "+obj1.getFirstName());
         }
 		System.out.println("Test Dinesh");
 		 
-	             for(ContactBean loadedObj : simpleDbList) {
+	             for(ContactBean loadedObj : googleCloudContactList) {
 	            	  if(searchDataflag)
 	            	  {
 	              fileObjectList.add(loadedObj);
@@ -162,14 +162,14 @@ public class ContactFileOperations{
 	
 	public static void deleteContact(ContactBean deleteContact)
 	{
-		SimpleDBOperations.deleteContact(deleteContact);
+		GoogleCloudStorageOperations.deleteContact(deleteContact);
 		
 	}
 	
 	
 	public static ContactBean getSelectedContact(ContactBean selectContactBean)
 	{
-		return  SimpleDBOperations.getSelectedBean(selectContactBean);
+		return  GoogleCloudStorageOperations.getSelectedBean(selectContactBean);
 		
 		
 	}
